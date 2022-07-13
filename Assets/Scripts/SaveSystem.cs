@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using GlobalVars;
+using static GlobalVars.Vars;
 
 [RequireComponent(typeof(LvlAutoSaver))]
     public class SaveSystem : MonoBehaviour
@@ -62,7 +62,7 @@ using GlobalVars;
         public void LoadNextLvl()
         {
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-        if (nextSceneIndex <= Vars.sceneCount)
+        if (nextSceneIndex <= sceneCount-1)
             SceneManager.LoadScene(nextSceneIndex);
         else
             SceneManager.LoadScene(0);

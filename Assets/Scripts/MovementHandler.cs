@@ -5,23 +5,43 @@ using UnityEngine;
 [RequireComponent(typeof(InputHandler))]
 public class MovementHandler : MonoBehaviour
 {
+    private Rigidbody _rb;
     private InputHandler _input;
     private float _speed = 0.4f;
+    
     void Start()
     {
+        _rb = GetComponent<Rigidbody>();
         _input = GetComponent<InputHandler>();
     }
+
+
     void Update()
     {
         MoveBall();
     }
+
+
     private void MoveBall()
     {
         if (_input.isTouched())
         {
-            Vector2 currDeltaPos = _input.GetTouchDeltaPos();
-            currDeltaPos = currDeltaPos * _speed;
-            Physics.gravity = new Vector3(currDeltaPos.x, 0 ,currDeltaPos.y);
+            Vector3 currDeltaPos = new Vector3(_input.GetTouchDeltaPos().x, 0, _input.GetTouchDeltaPos().y);
+            currDeltaPos *= _speed;
+            _rb.AddForce(currDeltaPos, ForceMode.Force);
+        }
+    }
+}
+
+
+namespace Player
+{
+    public class Player : MonoBehaviour
+    {
+        public static GameObject player { get; private set; }
+        private void Awake()
+        {
+            player = gameObject;
         }
     }
 }

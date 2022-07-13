@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-using GlobalVars;
+using static GlobalVars.Vars;
 
 public class LvlAutoSaver : MonoBehaviour
 {
 
     private void Start()
     {
-        Vars.saveSystem.SaveLastLvl();
+        saveSystem.SaveLastLvl();
     }
 }

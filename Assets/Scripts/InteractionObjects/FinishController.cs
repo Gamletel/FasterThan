@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using GlobalVars;
+using static GlobalVars.Vars;
 
 public class FinishController : MonoBehaviour
 {
@@ -9,7 +9,7 @@ public class FinishController : MonoBehaviour
     {
         if(other.TryGetComponent(typeof(PlayerController), out Component component))
         {
-            Vars.saveSystem.LoadNextLvl();
+            saveSystem.LoadNextLvl();
         }
     }
 }
