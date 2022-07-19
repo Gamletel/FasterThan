@@ -7,13 +7,19 @@ using UnityEngine.SceneManagement;
 public class TimerController : MonoBehaviour
 {
     [SerializeField] private float _maxTime;
+    [SerializeField] private ParticleSystem _timerParticle;
     private float _curTime;
     private Image _img;
-
+    private Color _newColorForSprite;
+    private Animator _timerParticleAnimator;
+    
     private void Start()
     {
         _img = GetComponent<Image>();
         _curTime = _maxTime;
+        _newColorForSprite = _img.color;
+        _timerParticleAnimator = _timerParticle.GetComponent<Animator>();
+        _timerParticleAnimator.speed = 1 / _maxTime * 5;
         StartCoroutine(Timer());
     }
 
@@ -22,13 +28,30 @@ public class TimerController : MonoBehaviour
     {
         while(_curTime != 0)
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.2f);
             _curTime--;
             float percent = _curTime / _maxTime;
-            _img.fillAmount = percent;
-            _img.color = new Color(255, 255 * percent, 255 * percent, 255);
+            ChangeTimerImg(percent);
+            ChangeTimerParticle(percent);
         }
+
         //Если время равно нулю, перезагружаем сцену
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    //Изменение спрайта таймера
+    private void ChangeTimerImg(float percent)
+    {
+        _newColorForSprite = new Color(1f, 0 + percent, 0 + percent);
+
+        _img.color = _newColorForSprite;
+        _img.fillAmount = percent;
+    }
+
+    //Изменение системы частиц таймера
+    private void ChangeTimerParticle(float percent)
+    {
+        _timerParticle.startColor = new Color((1 - percent)*2, 0 + percent, 0f);
+        
     }
 }
