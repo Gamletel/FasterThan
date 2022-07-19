@@ -12,28 +12,38 @@ using static GlobalVars.Vars;
 
         private void Awake()
         {
-#if UNITY_ANDROID && !UNITY_EDITOR
-        _path = Path.Combine(Application.persistentDataPath, "Save.json");
-#else
-        _path = Path.Combine(Application.dataPath, "Save.json");
-#endif
-        if (File.Exists(_path))
-        {
-            _save = JsonUtility.FromJson<SaveData>(File.ReadAllText(_path));
+    #if UNITY_ANDROID && !UNITY_EDITOR
+            _path = Path.Combine(Application.persistentDataPath, "Save.json");
+    #else
+            _path = Path.Combine(Application.dataPath, "Save.json");
+    #endif
+            if (File.Exists(_path))
+            {
+                _save = JsonUtility.FromJson<SaveData>(File.ReadAllText(_path));
+            }
+            else
+            {
+                SaveLastLvl();
+            }
         }
-        else
-        {
-            SaveLastLvl();
-        }
+
+    private void Start()
+    {
+        CoinBank.coinCollected += SaveCoins;
     }
 
+    private void SaveCoins(int coinAmount)
+    {
+        _save.coinsAmount = coinAmount;
+        Debug.Log($"Сохраненная сумма монеток: {coinAmount}");
+    }
 #if UNITY_ANDROID && !UNITY_EDITOR
     private void OnApplicationPause(bool pause)
     {
     if(pause) File.WriteAllText(_path, JsonUtility.ToJson(_save));
     }
 #endif
-        private void OnApplicationQuit()
+    private void OnApplicationQuit()
         {
             File.WriteAllText(_path, JsonUtility.ToJson(_save));
         }
@@ -72,4 +82,5 @@ using static GlobalVars.Vars;
     public class SaveData
     {
         public int lvlIndex = -1;
+        public int coinsAmount = 0;
     }

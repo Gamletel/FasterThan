@@ -16,7 +16,7 @@ public class MovementHandler : MonoBehaviour
     }
 
 
-    void Update()
+    void FixedUpdate()
     {
         MoveBall();
     }
@@ -29,19 +29,6 @@ public class MovementHandler : MonoBehaviour
             Vector3 currDeltaPos = new Vector3(_input.GetTouchDeltaPos().x, 0, _input.GetTouchDeltaPos().y);
             currDeltaPos *= _speed;
             _rb.AddForce(currDeltaPos, ForceMode.Force);
-        }
-    }
-}
-
-
-namespace Player
-{
-    public class Player : MonoBehaviour
-    {
-        public static GameObject player { get; private set; }
-        private void Awake()
-        {
-            player = gameObject;
         }
     }
 }

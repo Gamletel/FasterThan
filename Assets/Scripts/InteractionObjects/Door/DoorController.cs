@@ -10,12 +10,13 @@ public class DoorController : MonoBehaviour
 
     private void Start()
     {
+        //Создаем рандомный цвет для пары дверь/ключ и назначаем им материалы
         RandomizeMaterial();
         _key.GetComponent<MeshRenderer>().material = _material;
         _door.GetComponent<MeshRenderer>().material = _material;
     }
 
-
+    //Когда игрок зашел в триггер ключ удаляется, а дверь открывается
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(typeof(PlayerController), out Component component))
@@ -29,7 +30,7 @@ public class DoorController : MonoBehaviour
         }
     }
 
-
+    //Создаем рандомный материал
     private void RandomizeMaterial()
     {
         Color color = new Color(Random.value, Random.value, Random.value, 1);

@@ -7,17 +7,21 @@ using UnityEngine.SceneManagement;
 
 public class MenuPanelController : MonoBehaviour
 {
-    private bool _playBackwards;
-    private DOTweenAnimation _tween;
     [SerializeField] private Text loadLastLvlBtnText;
     [SerializeField] private Text _nameLvlText;
+    [SerializeField] private Text _collectedCoinsText;
+    private bool _playBackwards;
+    private DOTweenAnimation _tween;
 
     private void Start()
     {
+        CoinBank.coinCollected += OnCoinCollected;
         _tween = GetComponent<DOTweenAnimation>();
-        _nameLvlText.text = $"Уровень: {SceneManager.GetActiveScene().buildIndex}";
     }
-
+    private void OnCoinCollected(int coinAmount)
+    {
+        _collectedCoinsText.text = $"Монеток: {coinAmount}";
+    }
     public void MovePanel()
     {
         switch (!_playBackwards)
