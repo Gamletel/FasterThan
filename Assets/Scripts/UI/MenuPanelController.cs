@@ -16,9 +16,12 @@ public class MenuPanelController : MonoBehaviour
 
     private void Start()
     {
-        CoinBank.coinCollected += OnCoinCollected;
         _tween = GetComponent<DOTweenAnimation>();
-        //CoinBank.LoadCoins();
+        //Подписываемся на событие
+        _collectedCoinsText.text = $"Монеток(): {CoinBank.LoadCoins()}";
+        CoinBank.coinCollected += OnCoinCollected;
+        //Загружаем из файла сохранения кол-во монеток и отображаем их
+        
     }
     private void OnCoinCollected(int coinAmount)
     {

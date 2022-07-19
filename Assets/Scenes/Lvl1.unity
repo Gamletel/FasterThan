@@ -9750,6 +9750,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1329395609, guid: b5d0cc46f7c14de41bf5a67df74698c2, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 1578842572, guid: b5d0cc46f7c14de41bf5a67df74698c2, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 750
+      objectReference: {fileID: 0}
     - target: {fileID: 2118534882677575783, guid: b5d0cc46f7c14de41bf5a67df74698c2, type: 3}
       propertyPath: m_Name
       value: GameCanvas

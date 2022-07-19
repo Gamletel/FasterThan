@@ -17,10 +17,11 @@ using static GlobalVars.Vars;
     #else
             _path = Path.Combine(Application.dataPath, "Save.json");
     #endif
+            //Если уже есть сохраненный файл, то читаем его и отображаем
+            //количество загруженных монеток
             if (File.Exists(_path))
             {
                 _save = JsonUtility.FromJson<SaveData>(File.ReadAllText(_path));
-                LoadCoins(_save.coinsAmount);
             }
             else
             {
@@ -40,12 +41,14 @@ using static GlobalVars.Vars;
                         File.WriteAllText(_path, JsonUtility.ToJson(_save));
                     }
 
+            //Сохранение монеток
             public void SaveCoins(int coinCost)
             {
                 _save.coinsAmount += coinCost;
                 File.WriteAllText(_path, JsonUtility.ToJson(_save.coinsAmount));
                 Debug.Log($"Сохраненная сумма монеток: {_save.coinsAmount}");
             }
+            //Загрузка сохраненного количества монеток
             public int LoadCoins(int coinsAmount)
             {
                 coinsAmount = _save.coinsAmount;
