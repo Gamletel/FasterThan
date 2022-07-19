@@ -17,11 +17,12 @@ using static GlobalVars.Vars;
     #else
             _path = Path.Combine(Application.dataPath, "Save.json");
     #endif
-            //Если уже есть сохраненный файл, то читаем его и отображаем
-            //количество загруженных монеток
+            //Если уже есть сохраненный файл, то читаем его и
+            //Обновляем количество монеток
             if (File.Exists(_path))
             {
                 _save = JsonUtility.FromJson<SaveData>(File.ReadAllText(_path));
+                CoinBank.LoadCoins();
             }
             else
             {
@@ -29,7 +30,7 @@ using static GlobalVars.Vars;
             }
         }
 
-        
+        //При закрытии приложения сохраняем прогресс
 #if UNITY_ANDROID && !UNITY_EDITOR
         private void OnApplicationPause(bool pause)
         {

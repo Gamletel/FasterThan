@@ -12,6 +12,7 @@ public class CoinBank : MonoBehaviour
     //Всего монеток
     public static int coinsAmount { get; private set; }
 
+    //Загружаем и обновляем изначальное количество монеток
     public static int LoadCoins()
     {
         coinsAmount = saveSystem.LoadCoins(coinsAmount);

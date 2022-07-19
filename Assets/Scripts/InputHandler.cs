@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class InputHandler : MonoBehaviour
 {
+    //—читываем координаты движени€ пальца по экрану
     public Vector2 GetTouchDeltaPos()
     {
         if(Input.touchCount > 0)
@@ -11,7 +12,7 @@ public class InputHandler : MonoBehaviour
         return Vector2.zero;
     }
 
-
+    //переменна€ дл€ того, чтобы было €сно есть касание или нет
     public bool isTouched()
     {
         if (Input.touchCount > 0)

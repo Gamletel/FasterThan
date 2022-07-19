@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     
 }
+//Не помню зачем
 namespace Player
 {
     public class Player : MonoBehaviour

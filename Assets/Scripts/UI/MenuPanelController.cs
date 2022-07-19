@@ -8,7 +8,7 @@ using static GlobalVars.Vars;
 
 public class MenuPanelController : MonoBehaviour
 {
-    [SerializeField] private Text _loadLastLvlBtnText;
+    [SerializeField] private Text _openMenuBtnText;
     [SerializeField] private Text _nameLvlText;
     [SerializeField] private Text _collectedCoinsText;
     private bool _playBackwards;
@@ -18,15 +18,21 @@ public class MenuPanelController : MonoBehaviour
     {
         _tween = GetComponent<DOTweenAnimation>();
         //Подписываемся на событие
-        _collectedCoinsText.text = $"Монеток(): {CoinBank.LoadCoins()}";
         CoinBank.coinCollected += OnCoinCollected;
-        //Загружаем из файла сохранения кол-во монеток и отображаем их
-        
+        //Загружаем изначальное значение монеток
+        UpdateCoinsAmount(CoinBank.coinsAmount);
     }
-    private void OnCoinCollected(int coinAmount)
+    //Вызывается при сборе монетки
+    private void OnCoinCollected(int coinsAmount)
     {
-        _collectedCoinsText.text = $"Монеток: {coinAmount}";
+        UpdateCoinsAmount(coinsAmount);
     }
+    //Обновляем количество монеток
+    private void UpdateCoinsAmount(int coinsAmount)
+    {
+        _collectedCoinsText.text = $"Монеток: {coinsAmount}";
+    }
+    //Для открытия/закрытия боковой панели
     public void MovePanel()
     {
         switch (!_playBackwards)
@@ -34,16 +40,17 @@ public class MenuPanelController : MonoBehaviour
             case true:
                 _tween.DOPlayForward();
                 _playBackwards = !_playBackwards;
-                _loadLastLvlBtnText.text = "Закрыть";
+                _openMenuBtnText.text = "Закрыть";
                 return;
             case false:
                 _tween.DOPlayBackwards();
                 _playBackwards = !_playBackwards;
-                _loadLastLvlBtnText.text = "Меню";
+                _openMenuBtnText.text = "Меню";
                 return;
         }
         
     }
+    //Обновляем id уровня на панели сверху
     public void LoadMenuScene()
     {
         int menuSceneIndex = 0;

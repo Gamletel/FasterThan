@@ -28,7 +28,7 @@ public class TimerController : MonoBehaviour
             _img.fillAmount = percent;
             _img.color = new Color(255, 255 * percent, 255 * percent, 255);
         }
-
+        //Если время равно нулю, перезагружаем сцену
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

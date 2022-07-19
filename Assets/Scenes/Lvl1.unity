@@ -433,6 +433,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1782525990 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1714480381, guid: b5d0cc46f7c14de41bf5a67df74698c2, type: 3}
+  m_PrefabInstance: {fileID: 2118534883211717192}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2038625755
 GameObject:
   m_ObjectHideFlags: 0
@@ -9850,6 +9861,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 963194231}
+    - target: {fileID: 5018666504267759661, guid: b5d0cc46f7c14de41bf5a67df74698c2, type: 3}
+      propertyPath: _openMenuBtnText
+      value: 
+      objectReference: {fileID: 1782525990}
+    - target: {fileID: 5018666504267759661, guid: b5d0cc46f7c14de41bf5a67df74698c2, type: 3}
+      propertyPath: _openPanelBtnText
+      value: 
+      objectReference: {fileID: 1782525990}
     - target: {fileID: 5018666504267759661, guid: b5d0cc46f7c14de41bf5a67df74698c2, type: 3}
       propertyPath: _collectedCoinsText
       value: 

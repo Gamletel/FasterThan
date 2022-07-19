@@ -15,20 +15,21 @@ public class MovementHandler : MonoBehaviour
         _input = GetComponent<InputHandler>();
     }
 
-
+    //≈сли получаем касание, тогда начинаем добавл€ть силу к игроку в соответствующую сторону
     void FixedUpdate()
     {
-        MoveBall();
+        if (_input.isTouched())
+        {
+            MoveBall();
+        }
     }
 
 
     private void MoveBall()
     {
-        if (_input.isTouched())
-        {
             Vector3 currDeltaPos = new Vector3(_input.GetTouchDeltaPos().x, 0, _input.GetTouchDeltaPos().y);
             currDeltaPos *= _speed;
             _rb.AddForce(currDeltaPos, ForceMode.Force);
-        }
+
     }
 }
