@@ -8,19 +8,20 @@ public class TimerController : MonoBehaviour
 {
     [SerializeField] private float _maxTime;
     [SerializeField] private ParticleSystem _timerParticle;
+    [SerializeField] private Image _img;
     private float _curTime;
-    private Image _img;
     private Color _newColorForSprite;
     private Animator _timerParticleAnimator;
     
     private void Start()
     {
-        _img = GetComponent<Image>();
         _curTime = _maxTime;
         _newColorForSprite = _img.color;
-        _timerParticleAnimator = _timerParticle.GetComponent<Animator>();
-        _timerParticleAnimator.speed = 1 / _maxTime * 5;
         StartCoroutine(Timer());
+
+        //Ёто чтобы анимаци€ длилась столько, сколько длитс€ уровень
+        _timerParticleAnimator = _timerParticle.GetComponent<Animator>();
+        _timerParticleAnimator.speed = 1 / _maxTime * 2; 
     }
 
     //“аймер (картинка) уменьшаетс€ в зависимости от оставшегос€ времени
@@ -28,7 +29,7 @@ public class TimerController : MonoBehaviour
     {
         while(_curTime != 0)
         {
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.5f);
             _curTime--;
             float percent = _curTime / _maxTime;
             ChangeTimerImg(percent);
@@ -51,7 +52,6 @@ public class TimerController : MonoBehaviour
     //»зменение системы частиц таймера
     private void ChangeTimerParticle(float percent)
     {
-        _timerParticle.startColor = new Color((1 - percent)*2, 0 + percent, 0f);
-        
+        _timerParticle.startColor = new Color((1 - percent)*2, 0 + percent, 0f); 
     }
 }

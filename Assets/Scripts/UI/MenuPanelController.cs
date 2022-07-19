@@ -8,6 +8,7 @@ using static GlobalVars.Vars;
 
 public class MenuPanelController : MonoBehaviour
 {
+    [SerializeField] private GameObject _mainMenuPanel;
     [SerializeField] private Text _openMenuBtnText;
     [SerializeField] private Text _nameLvlText;
     [SerializeField] private Text _collectedCoinsText;
@@ -16,7 +17,7 @@ public class MenuPanelController : MonoBehaviour
 
     private void Start()
     {
-        _tween = GetComponent<DOTweenAnimation>();
+        _tween = _mainMenuPanel.GetComponent<DOTweenAnimation>();
         //Подписываемся на событие
         CoinBank.coinCollected += OnCoinCollected;
         //Загружаем изначальное значение монеток
