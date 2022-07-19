@@ -4,10 +4,11 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using static GlobalVars.Vars;
 
 public class MenuPanelController : MonoBehaviour
 {
-    [SerializeField] private Text loadLastLvlBtnText;
+    [SerializeField] private Text _loadLastLvlBtnText;
     [SerializeField] private Text _nameLvlText;
     [SerializeField] private Text _collectedCoinsText;
     private bool _playBackwards;
@@ -17,6 +18,7 @@ public class MenuPanelController : MonoBehaviour
     {
         CoinBank.coinCollected += OnCoinCollected;
         _tween = GetComponent<DOTweenAnimation>();
+        //CoinBank.LoadCoins();
     }
     private void OnCoinCollected(int coinAmount)
     {
@@ -29,12 +31,12 @@ public class MenuPanelController : MonoBehaviour
             case true:
                 _tween.DOPlayForward();
                 _playBackwards = !_playBackwards;
-                loadLastLvlBtnText.text = "Закрыть";
+                _loadLastLvlBtnText.text = "Закрыть";
                 return;
             case false:
                 _tween.DOPlayBackwards();
                 _playBackwards = !_playBackwards;
-                loadLastLvlBtnText.text = "Меню";
+                _loadLastLvlBtnText.text = "Меню";
                 return;
         }
         
