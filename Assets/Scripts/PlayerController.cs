@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     
+
 }
 //Не помню зачем
 namespace Player

@@ -15,7 +15,7 @@ public class InputHandler : MonoBehaviour
     //переменная для того, чтобы было ясно есть касание или нет
     public bool isTouched()
     {
-        if (Input.touchCount > 0)
+        if (Input.touchCount == 1)
             return true;
         else
             return false;

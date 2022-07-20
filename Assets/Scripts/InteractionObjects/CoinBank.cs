@@ -5,7 +5,7 @@ using UnityEngine;
 using static GlobalVars.Vars;
 public class CoinBank : MonoBehaviour
 {
-    //ПРИ ПОДБОРЕ смотрим сколько было и сколько стало монеток
+    //ПРИ ПОДБОРЕ смотрим добавляем монетки
     public delegate void CoinHandler(int coinCost);
     public static event CoinHandler coinCollected;
 
