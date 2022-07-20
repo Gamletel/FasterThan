@@ -18,6 +18,7 @@ public class MenuPanelController : MonoBehaviour
     private void Start()
     {
         _tween = _mainMenuPanel.GetComponent<DOTweenAnimation>();
+        _nameLvlText.text = $"Уровень: {SceneManager.GetActiveScene().buildIndex}";
         //Подписываемся на событие
         CoinBank.coinCollected += OnCoinCollected;
         //Загружаем изначальное значение монеток
