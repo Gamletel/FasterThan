@@ -38,9 +38,9 @@ using static GlobalVars.Vars;
         }
 #endif
             private void OnApplicationQuit()
-                    {
-                        File.WriteAllText(_path, JsonUtility.ToJson(_save));
-                    }
+            {
+                File.WriteAllText(_path, JsonUtility.ToJson(_save));
+            }
 
             //Сохранение монеток
             public void SaveCoins(int coinCost)
@@ -49,6 +49,7 @@ using static GlobalVars.Vars;
                 File.WriteAllText(_path, JsonUtility.ToJson(_save.coinsAmount));
                 Debug.Log($"Сохраненная сумма монеток: {_save.coinsAmount}");
             }
+
             //Загрузка сохраненного количества монеток
             public int LoadCoins(int coinsAmount)
             {
@@ -57,16 +58,17 @@ using static GlobalVars.Vars;
                 return coinsAmount;
             }
 
+
             public void SaveLastLvl()
             {
-            if (_save.lvlIndex < SceneManager.GetActiveScene().buildIndex)
-            {
-                _save.lvlIndex = SceneManager.GetActiveScene().buildIndex;
-                File.WriteAllText(_path, JsonUtility.ToJson(_save.lvlIndex));
-                Debug.Log($"Уровень {_save.lvlIndex} сохранен в прогресс!");
-            }
-            else
-                Debug.Log("Сохранение не требуется!");
+                if (_save.lvlIndex < SceneManager.GetActiveScene().buildIndex)
+                {
+                    _save.lvlIndex = SceneManager.GetActiveScene().buildIndex;
+                    File.WriteAllText(_path, JsonUtility.ToJson(_save.lvlIndex));
+                    Debug.Log($"Уровень {_save.lvlIndex} сохранен в прогресс!");
+                }
+                else
+                    Debug.Log("Сохранение не требуется!");
             }
 
 
@@ -75,16 +77,26 @@ using static GlobalVars.Vars;
                 SceneManager.LoadScene(_save.lvlIndex++);
             }
 
+
             public void LoadNextLvl()
             {
-            int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-            if (nextSceneIndex <= sceneCount-1)
-                SceneManager.LoadScene(nextSceneIndex);
-            else
-                SceneManager.LoadScene(0);
+                int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+                if (nextSceneIndex <= sceneCount-1)
+                    SceneManager.LoadScene(nextSceneIndex);
+                else
+                    SceneManager.LoadScene(0);
+                Time.timeScale = 1;
+            }
+
+
+            public void RestartLvl()
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                Time.timeScale = 1;
             }
     
     }
+
     [Serializable]
     public class SaveData
     {

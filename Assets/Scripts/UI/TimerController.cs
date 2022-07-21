@@ -37,7 +37,8 @@ public class TimerController : MonoBehaviour
         }
 
         //Если время равно нулю, перезагружаем сцену
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        GetComponent<MenuPanelController>().OpenLosePanel();
+        Time.timeScale = 0;
     }
 
     //Изменение спрайта таймера

@@ -8,6 +8,9 @@ using static GlobalVars.Vars;
 
 public class MenuPanelController : MonoBehaviour
 {
+    [SerializeField] private GameObject _winPanel;
+    [SerializeField] private GameObject _losePanel;
+
     [SerializeField] private GameObject _mainMenuPanel;
     [SerializeField] private Text _openMenuBtnText;
     [SerializeField] private Text _nameLvlText;
@@ -24,16 +27,19 @@ public class MenuPanelController : MonoBehaviour
         //Загружаем изначальное значение монеток
         UpdateCoinsAmount(CoinBank.coinsAmount);
     }
+
     //Вызывается при сборе монетки
     private void OnCoinCollected(int coinsAmount)
     {
         UpdateCoinsAmount(coinsAmount);
     }
+
     //Обновляем количество монеток
     private void UpdateCoinsAmount(int coinsAmount)
     {
         _collectedCoinsText.text = $"Монеток: {coinsAmount}";
     }
+
     //Для открытия/закрытия боковой панели
     public void MovePanel()
     {
@@ -52,10 +58,22 @@ public class MenuPanelController : MonoBehaviour
         }
         
     }
+
     //Обновляем id уровня на панели сверху
     public void LoadMenuScene()
     {
         int menuSceneIndex = 0;
         SceneManager.LoadScene(menuSceneIndex);
+    }
+
+    //Вызывать когда нужно открыть меню Победы/Проигрыша
+    public void OpenWinPanel()
+    {
+        _winPanel.SetActive(true);
+    }
+
+    public void OpenLosePanel()
+    {
+        _losePanel.SetActive(true);
     }
 }
