@@ -24,7 +24,7 @@ public class MovementHandler : MonoBehaviour
         }
     }
 
-
+    //Смотрим в каком направлении прилагать силу и применяем эту силу
     private void MoveBall()
     {
             Vector3 currDeltaPos = new Vector3(_input.GetTouchDeltaPos().x, 0, _input.GetTouchDeltaPos().y);

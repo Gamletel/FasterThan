@@ -9,8 +9,10 @@ public class CoinBank : MonoBehaviour
     public delegate void CoinHandler(int coinCost);
     public static event CoinHandler coinCollected;
 
+
     //Всего монеток
     public static int coinsAmount { get; private set; }
+
 
     //Загружаем и обновляем изначальное количество монеток
     public static int LoadCoins()
@@ -18,6 +20,7 @@ public class CoinBank : MonoBehaviour
         coinsAmount = saveSystem.LoadCoins(coinsAmount);
         return coinsAmount;
     }
+
 
     //Добавляем монетки
     public static void OnCoinCollected(int coinCost)

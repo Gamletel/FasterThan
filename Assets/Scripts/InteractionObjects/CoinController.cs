@@ -4,6 +4,8 @@ using UnityEngine;
 public class CoinController : MonoBehaviour
 {
     private int _coinCost = 2;
+
+
     //Если игрок зашел в триггер монетки, тогда добавляем монетку
     private void OnTriggerEnter(Collider other)
     {

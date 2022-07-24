@@ -6,6 +6,7 @@ public class InputTest : MonoBehaviour
 {
     private float _startDistance = 0;
     private float _curDistance;
+
     void Update()
     {
         var touchCount = Input.touchCount;
@@ -56,11 +57,13 @@ public class InputTest : MonoBehaviour
                 return;
         }
     }
+
     private void CheckFirstPos(Touch touch0, Touch touch1)
     {
         _startDistance = Mathf.Abs(Vector3.Distance(touch0.position, touch1.position));
         Debug.LogWarning(_startDistance);
     }
+
     private void CheckDistance(Touch touch0, Touch touch1)
     {
         _curDistance = Mathf.Abs(Vector3.Distance(touch0.position, touch1.position));

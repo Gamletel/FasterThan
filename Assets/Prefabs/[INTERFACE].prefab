@@ -251,7 +251,7 @@ GameObject:
   - component: {fileID: 507029990}
   - component: {fileID: 507029989}
   m_Layer: 5
-  m_Name: RestartLvl
+  m_Name: RestartLvlBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -757,7 +757,7 @@ GameObject:
   - component: {fileID: 1643439114}
   - component: {fileID: 1643439113}
   m_Layer: 5
-  m_Name: LoadNextLvl
+  m_Name: LoadNextLvlBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

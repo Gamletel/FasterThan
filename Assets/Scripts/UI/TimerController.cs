@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using static GlobalVars.Vars;
 
 public class TimerController : MonoBehaviour
 {
@@ -36,9 +37,9 @@ public class TimerController : MonoBehaviour
             ChangeTimerParticle(percent);
         }
 
-        //Если время равно нулю, перезагружаем сцену
+        //Если время равно нулю, то включаем панель проигрыша и останавливаем таймер
         GetComponent<MenuPanelController>().OpenLosePanel();
-        Time.timeScale = 0;
+        StopTimer();
     }
 
     //Изменение спрайта таймера
@@ -54,5 +55,15 @@ public class TimerController : MonoBehaviour
     private void ChangeTimerParticle(float percent)
     {
         _timerParticle.startColor = new Color((1 - percent)*2, 0 + percent, 0f); 
+    }
+
+    //Для остановки таймера
+    public void StopTimer()
+    {
+        StopAllCoroutines();
+        _timerParticle.Stop();
+        _timerParticleAnimator.StopPlayback();
+        player.GetComponent<MovementHandler>().enabled = false;
+        player.GetComponent<Rigidbody>().Sleep();
     }
 }
