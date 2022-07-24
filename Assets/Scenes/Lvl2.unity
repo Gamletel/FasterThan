@@ -223,6 +223,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2549881998569741741, guid: 8ea7ba8b6378bb14da33763866134a05, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2601368702781424490, guid: 8ea7ba8b6378bb14da33763866134a05, type: 3}
+      propertyPath: m_Text
+      value: "\u0418\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0439 \u043A\u043B\u044E\u0447,
+        \u0447\u0442\u043E\u0431\u044B \u043E\u0442\u043A\u0440\u044B\u0442\u044C
+        \u0434\u0432\u0435\u0440\u044C:"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3638522627906376488, guid: 8ea7ba8b6378bb14da33763866134a05, type: 3}
+      propertyPath: _modelPref
+      value: 
+      objectReference: {fileID: 873633636}
     - target: {fileID: 3903153497690741114, guid: 8ea7ba8b6378bb14da33763866134a05, type: 3}
       propertyPath: _maxTime
       value: 80
@@ -439,6 +453,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4770af7e4ab8754db5ba9baa1d9acd0, type: 3}
+--- !u!1 &873633636 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8336791959461880057, guid: c4770af7e4ab8754db5ba9baa1d9acd0, type: 3}
+  m_PrefabInstance: {fileID: 863871333}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1216800711
 PrefabInstance:
   m_ObjectHideFlags: 0

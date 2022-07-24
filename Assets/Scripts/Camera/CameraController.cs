@@ -27,6 +27,8 @@ public class CameraController : MonoBehaviour
         _playerVCam = _playerCam.GetComponent<CinemachineVirtualCamera>();
         //Ќачальное значение дальности камеры
         _camStartDistance = _playerVCam.m_Lens.OrthographicSize;
+
+        _playerVCam.Follow = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void Update()
