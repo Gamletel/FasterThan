@@ -7,6 +7,8 @@ public class DoorController : MonoBehaviour
     [SerializeField] private GameObject _key;
     [SerializeField] private GameObject _door;
     private Material _material;
+    private Animator _animator;
+    private AudioSource _sourse;
 
     private void Start()
     {
@@ -14,6 +16,8 @@ public class DoorController : MonoBehaviour
         RandomizeMaterial();
         _key.GetComponent<MeshRenderer>().material = _material;
         _door.GetComponent<MeshRenderer>().material = _material;
+        _animator = GetComponent<Animator>();
+        _sourse = GetComponent<AudioSource>();
     }
 
     //Когда игрок зашел в триггер ключ удаляется, а дверь открывается
@@ -23,6 +27,8 @@ public class DoorController : MonoBehaviour
         {
             DestroyKey();
             OpenDoor();
+            _animator.SetTrigger("KeyPickedUp");
+            _sourse.PlayOneShot(_sourse.clip);
         }
         else
         {

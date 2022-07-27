@@ -11,6 +11,8 @@ public class CoinController : MonoBehaviour
     {
         if(other.TryGetComponent(typeof(PlayerController), out Component component))
         {
+            AudioSource sourse = GetComponent<AudioSource>();
+            sourse.PlayOneShot(sourse.clip);
             AddCoin(_coinCost);
         }
     }

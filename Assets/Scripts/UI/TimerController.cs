@@ -13,6 +13,7 @@ public class TimerController : MonoBehaviour
     private float _curTime;
     private Color _newColorForSprite;
     private Animator _timerParticleAnimator;
+    private GameObject _player;
     
     private void Start()
     {
@@ -22,7 +23,9 @@ public class TimerController : MonoBehaviour
 
         //Это чтобы анимация длилась столько, сколько длится уровень
         _timerParticleAnimator = _timerParticle.GetComponent<Animator>();
-        _timerParticleAnimator.speed = 1 / _maxTime * 2; 
+        _timerParticleAnimator.speed = 1 / _maxTime * 2;
+
+        _player = GameObject.FindGameObjectWithTag("Player");
     }
 
     //Таймер (картинка) уменьшается в зависимости от оставшегося времени
@@ -63,7 +66,7 @@ public class TimerController : MonoBehaviour
         StopAllCoroutines();
         _timerParticle.Stop();
         _timerParticleAnimator.StopPlayback();
-        player.GetComponent<MovementHandler>().enabled = false;
-        player.GetComponent<Rigidbody>().Sleep();
+        _player.GetComponent<MovementHandler>().enabled = false;
+        _player.GetComponent<Rigidbody>().Sleep();
     }
 }
