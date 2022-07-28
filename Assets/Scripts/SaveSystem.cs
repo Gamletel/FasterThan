@@ -18,7 +18,7 @@ using static GlobalVars.Vars;
             _path = Path.Combine(Application.dataPath, "Save.json");
     #endif
             //Если уже есть сохраненный файл, то читаем его и
-            //Обновляем количество монеток
+            //обновляем количество монеток
             if (File.Exists(_path))
             {
                 _save = JsonUtility.FromJson<SaveData>(File.ReadAllText(_path));
@@ -94,7 +94,13 @@ using static GlobalVars.Vars;
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 Time.timeScale = 1;
             }
-    
+
+
+            public void ReadData(int maxLvl, int coinsAmount)
+            {
+                maxLvl = _save.lvlIndex;
+                coinsAmount = _save.coinsAmount;
+            }
     }
 
     [Serializable]

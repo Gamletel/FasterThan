@@ -63,6 +63,7 @@ public class TimerController : MonoBehaviour
         StopAllCoroutines();
         _timerParticle.Stop();
         _timerParticleAnimator.StopPlayback();
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponent<MovementHandler>().enabled = false;
         player.GetComponent<Rigidbody>().Sleep();
     }

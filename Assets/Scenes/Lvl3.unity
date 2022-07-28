@@ -248,7 +248,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -665,6 +665,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3903153497690741114, guid: 8ea7ba8b6378bb14da33763866134a05, type: 3}
+      propertyPath: _maxTime
+      value: 110
+      objectReference: {fileID: 0}
     - target: {fileID: 4298922465628265578, guid: 8ea7ba8b6378bb14da33763866134a05, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -708,6 +712,10 @@ PrefabInstance:
     - target: {fileID: 4298922465628265578, guid: 8ea7ba8b6378bb14da33763866134a05, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5631232382856057672, guid: 8ea7ba8b6378bb14da33763866134a05, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -185
       objectReference: {fileID: 0}
     - target: {fileID: 9134982643703205733, guid: 8ea7ba8b6378bb14da33763866134a05, type: 3}
       propertyPath: m_Name
